@@ -1,30 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function register(Request $request){
     //
-  /*  $product = Product::create([
-       'name' => 'ecommerce product',
+  /*  $Product = Product::create([
+       'name' => 'ecommerce Product',
         'unit' => '50',
         'price' => '50',
         'quantity' => '50',
         ]);
-        echo 'product: ', $product->name;*/
+        echo 'Product: ', $Product->name;*/
 
-return view('product.register');
+return view('Product.register');
 function store(Request $request)
 {
-    $product = new product();
-    $product->name= $request->name;
-    $product->unit= $request->unit;
-    $product->price= $request->price;
-    $product->quantity= $request->quantity;
-    $is_saved = $product->save();
+    $Product = new Product();
+    $Product->name= $request->name;
+    $Product->unit= $request->unit;
+    $Product->price= $request->price;
+    $Product->quantity= $request->quantity;
+    $is_saved = $Product->save();
  if($is_saved){
  echo "Record saved successfully.";
  }
@@ -34,6 +34,12 @@ function store(Request $request)
 
 
 }
+
        
+}
+public function get_all()
+{
+ $Product = Product::all();
+ return view('Product.get_all', compact('Product'));
 }
 }
